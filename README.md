@@ -1,5 +1,10 @@
 # Unique validation for Objection.js
 
+[![npm](https://img.shields.io/npm/v/objection-unique.svg?style=flat-square)](https://npmjs.org/package/objection-unique)
+![node](https://img.shields.io/node/v/objection-unique.svg?style=flat-square)
+[![Build Status](https://img.shields.io/travis/seegno/objection-unique/master.svg?style=flat-square)](https://travis-ci.org/seegno/objection-unique)
+[![Coverage Status](https://img.shields.io/coveralls/seegno/objection-unique/master.svg?style=flat-square)](https://coveralls.io/github/seegno/objection-unique?branch=master)
+
 This plugin adds a unique validation for [Objection.js](https://github.com/Vincit/objection.js/) models.
 
 **NOTE:** Unique validation at update only works with `$query` methods.
