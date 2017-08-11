@@ -18,7 +18,7 @@ module.exports = options => {
   }, options);
 
   return Model => {
-    return class UniquePlugin extends Model {
+    return class extends Model {
 
       /**
        * Before insert.
