@@ -133,6 +133,30 @@ describe('FoobarController', () => {
       }
     });
 
+    it('should throw a `ValidationError` for the correct field when patching.', async () => {
+      const TestModel = modelFactory({
+        fields: ['bar', 'foo']
+      });
+
+      await TestModel.query().insert({ bar: 'bar', foo: 'foo' });
+
+      const result = await TestModel.query().insertAndFetch({ bar: 'biz', foo: 'buz' });
+
+      try {
+        await result.$query().patch({ foo: 'foo' });
+
+        fail();
+      } catch (e) {
+        expect(e).toBeInstanceOf(ValidationError);
+        expect(e.data).toEqual({
+          foo: [{
+            keyword: 'unique',
+            message: 'foo already in use.'
+          }]
+        });
+      }
+    });
+
     it('should update the entity ignoring the unique validation if the values are from the same entity that are begin updated.', async () => {
       const TestModel = modelFactory({
         fields: ['bar', 'foo']

@@ -73,7 +73,7 @@ module.exports = options => {
        */
 
       getQuery(update, queryOptions) {
-        return options.fields.reduce((queries, field) => {
+        return options.fields.reduce((queries, field, index) => {
           if (isNil(this[field])) {
             return queries;
           }
@@ -90,7 +90,7 @@ module.exports = options => {
             );
           }
 
-          queries.push(query);
+          queries[index] = query;
 
           return queries;
         }, []);
