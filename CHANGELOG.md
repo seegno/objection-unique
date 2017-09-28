@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.2.1](https://github.com/seegno/objection-unique/tree/v0.2.1) (2017-09-28)
+[Full Changelog](https://github.com/seegno/objection-unique/compare/v0.2.0...v0.2.1)
+
+**Merged pull requests:**
+
+- Update yarn lockfile [\#7](https://github.com/seegno/objection-unique/pull/7) ([nunorafaelrocha](https://github.com/nunorafaelrocha))
+- Fix a bug when running patch queries [\#6](https://github.com/seegno/objection-unique/pull/6) ([dsego](https://github.com/dsego))
+
 ## [v0.2.0](https://github.com/seegno/objection-unique/tree/v0.2.0) (2017-08-11)
 [Full Changelog](https://github.com/seegno/objection-unique/compare/v0.1.0...v0.2.0)
 
