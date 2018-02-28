@@ -54,7 +54,7 @@
     "jest": "^20.0.3",
     "knex": "^0.13.0",
     "lint-staged": "^3.4.1",
-    "objection": "^0.8.5",
+    "objection": "^1.0.0",
     "pre-commit": "^1.2.2",
     "sqlite3": "^3.1.8"
   },
