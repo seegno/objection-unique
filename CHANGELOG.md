@@ -1,5 +1,14 @@
 # Changelog
 
+## [v1.0.0](https://github.com/seegno/objection-unique/tree/v1.0.0) (2018-03-01)
+[Full Changelog](https://github.com/seegno/objection-unique/compare/v0.2.1...v1.0.0)
+
+**Merged pull requests:**
+
+- Add objection to peer dependencies [\#11](https://github.com/seegno/objection-unique/pull/11) ([nunorafaelrocha](https://github.com/nunorafaelrocha))
+- Remove node 4 support [\#10](https://github.com/seegno/objection-unique/pull/10) ([nunorafaelrocha](https://github.com/nunorafaelrocha))
+- Update for compatibility with Objection 1.0.0 [\#8](https://github.com/seegno/objection-unique/pull/8) ([trey-baker](https://github.com/trey-baker))
+
 ## [v0.2.1](https://github.com/seegno/objection-unique/tree/v0.2.1) (2017-09-28)
 [Full Changelog](https://github.com/seegno/objection-unique/compare/v0.2.0...v0.2.1)
 
