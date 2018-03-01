@@ -63,7 +63,10 @@ module.exports = options => {
             const errors = this.parseErrors(rows);
 
             if (!isEmpty(errors)) {
-              throw Model.createValidationError(errors);
+              throw Model.createValidationError({
+                data: errors,
+                type: 'ModelValidation'
+              });
             }
           });
       }

@@ -111,10 +111,10 @@ try {
 These options can be provided when instantiating the plugin:
 
 ```js
-const unique = require('objection-unique')(
+const unique = require('objection-unique')({
   fields: ['email', 'username'],
   identifiers: ['id']
-);
+});
 ```
 
 ## Tests
