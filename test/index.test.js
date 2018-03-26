@@ -40,6 +40,8 @@ describe('FoobarController', () => {
         fail();
       } catch (e) {
         expect(e).toBeInstanceOf(ValidationError);
+        expect(e.message).toEqual('Unique Validation Failed');
+        expect(e.type).toEqual('ModelValidation');
         expect(e.data).toEqual({
           bar: [{
             keyword: 'unique',
@@ -120,6 +122,8 @@ describe('FoobarController', () => {
         fail();
       } catch (e) {
         expect(e).toBeInstanceOf(ValidationError);
+        expect(e.message).toEqual('Unique Validation Failed');
+        expect(e.type).toEqual('ModelValidation');
         expect(e.data).toEqual({
           bar: [{
             keyword: 'unique',
@@ -148,6 +152,8 @@ describe('FoobarController', () => {
         fail();
       } catch (e) {
         expect(e).toBeInstanceOf(ValidationError);
+        expect(e.message).toEqual('Unique Validation Failed');
+        expect(e.type).toEqual('ModelValidation');
         expect(e.data).toEqual({
           foo: [{
             keyword: 'unique',

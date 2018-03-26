@@ -65,6 +65,7 @@ module.exports = options => {
             if (!isEmpty(errors)) {
               throw Model.createValidationError({
                 data: errors,
+                message: 'Unique Validation Failed',
                 type: 'ModelValidation'
               });
             }
