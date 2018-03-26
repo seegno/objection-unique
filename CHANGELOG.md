@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.0.1](https://github.com/seegno/objection-unique/tree/v1.0.1) (2018-03-26)
+[Full Changelog](https://github.com/seegno/objection-unique/compare/v1.0.0...v1.0.1)
+
+**Merged pull requests:**
+
+- Add unique validation error message [\#12](https://github.com/seegno/objection-unique/pull/12) ([joaonice](https://github.com/joaonice))
+
 ## [v1.0.0](https://github.com/seegno/objection-unique/tree/v1.0.0) (2018-03-01)
 [Full Changelog](https://github.com/seegno/objection-unique/compare/v0.2.1...v1.0.0)
 
