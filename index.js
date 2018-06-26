@@ -18,6 +18,10 @@ module.exports = options => {
     identifiers: ['id']
   }, options);
 
+  if (isEmpty(options.fields) || isEmpty(options.identifiers)) {
+    throw new Error('Fields and identifiers options must be defined.');
+  }
+
   return Model => {
     return class extends Model {
 
@@ -28,10 +32,6 @@ module.exports = options => {
       $beforeInsert(context) {
         const parent = super.$beforeInsert(context);
 
-        if (isEmpty(options.fields) || isEmpty(options.identifiers)) {
-          throw new Error('Fields and identifiers options must be defined.');
-        }
-
         return this.queryResolver(parent);
       }
 
@@ -41,10 +41,6 @@ module.exports = options => {
 
       $beforeUpdate(queryOptions, context) {
         const parent = super.$beforeUpdate(queryOptions, context);
-
-        if (isEmpty(options.fields) || isEmpty(options.identifiers)) {
-          throw new Error('Fields and identifiers options must be defined.');
-        }
 
         if (isEmpty(queryOptions.old)) {
           throw new Error('Unique validation at update only works with queries started with $query.');
