@@ -19,6 +19,7 @@ const exit = process.exit;
 (async () => {
   // Drop `Test` table.
   await knex.schema.dropTableIfExists('Test');
+  await knex.schema.dropTableIfExists('CompoundTest');
 
   // Create `Test` table.
   await knex.schema
@@ -28,6 +29,16 @@ const exit = process.exit;
      table.string('bar').unique();
      table.string('biz');
    });
+
+  // Create `CompoundTest` table.
+  await knex.schema
+    .createTableIfNotExists('CompoundTest', table => {
+      table.increments('id').primary();
+      table.string('foo');
+      table.string('bar');
+      table.string('biz');
+      table.unique(['foo', 'bar']);
+    });
 
   exit();
 })();

@@ -5,6 +5,7 @@
 
 import { ValidationError } from 'objection';
 import clearDatabase from './utils/clear-database';
+import compoundModelFactory from './utils/compound-model-factory';
 import modelFactory from './utils/model-factory';
 
 /**
@@ -197,6 +198,49 @@ describe('FoobarController', () => {
       result = await result.$query().patchAndFetch({ bar: 'biz' });
 
       expect(result.bar).toBe('biz');
+    });
+
+    it('when applied to multiple fields should create and update entity.', async () => {
+      const CompoundTestModel = compoundModelFactory({
+        fields: [['bar', 'foo']]
+      });
+
+      await CompoundTestModel.query().insertAndFetch({ bar: 'bar', foo: 'foo' });
+      let result = await CompoundTestModel.query().insertAndFetch({ bar: 'foo', foo: 'bar' });
+
+      result = await result.$query().patchAndFetch({ bar: 'biz' });
+
+      expect(result.bar).toBe('biz');
+    });
+
+    it('when applied to multiple fields should throw a `ValidationError` for all fields when patching.', async () => {
+      const CompoundTestModel = compoundModelFactory({
+        fields: [['bar', 'foo']]
+      });
+
+      await CompoundTestModel.query().insert({ bar: 'arg', foo: 'gar' });
+
+      const result = await CompoundTestModel.query().insertAndFetch({ bar: 'biz', foo: 'gar' });
+
+      try {
+        await result.$query().patch({ bar: 'arg' });
+
+        fail();
+      } catch (e) {
+        expect(e).toBeInstanceOf(ValidationError);
+        expect(e.message).toEqual('Unique Validation Failed');
+        expect(e.type).toEqual('ModelValidation');
+        expect(e.data).toEqual({
+          bar: [{
+            keyword: 'unique',
+            message: 'bar,foo already in use.'
+          }],
+          foo: [{
+            keyword: 'unique',
+            message: 'bar,foo already in use.'
+          }]
+        });
+      }
     });
   });
 });
