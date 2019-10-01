@@ -15,19 +15,17 @@ import modelFactory from './utils/model-factory';
 describe('FoobarController', () => {
   beforeEach(clearDatabase);
 
-  describe('$beforeInsert', () => {
-    it('should throw an error if there is no fields or identifiers options.', async () => {
+  it('should throw an error if there is no fields or identifiers options.', () => {
+    try {
       const TestModel = modelFactory();
 
-      try {
-        await TestModel.query().insert({});
+      fail();
+    } catch (e) {
+      expect(e.message).toBe('Fields and identifiers options must be defined.');
+    }
+  });
 
-        fail();
-      } catch (e) {
-        expect(e.message).toBe('Fields and identifiers options must be defined.');
-      }
-    });
-
+  describe('$beforeInsert', () => {
     it('should throw a `ValidationError` with the unique fields that are already used.', async () => {
       const TestModel = modelFactory({
         fields: ['bar', 'foo']
@@ -82,18 +80,6 @@ describe('FoobarController', () => {
   });
 
   describe('$beforeUpdate', () => {
-    it('should throw an error if there is no fields or identifiers options.', async () => {
-      const TestModel = modelFactory();
-
-      try {
-        await TestModel.query().update({});
-
-        fail();
-      } catch (e) {
-        expect(e.message).toBe('Fields and identifiers options must be defined.');
-      }
-    });
-
     it('should throw an error if update is not a $query method.', async () => {
       const TestModel = modelFactory({
         fields: ['bar', 'foo']

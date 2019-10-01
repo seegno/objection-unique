@@ -3,6 +3,7 @@
  * Module dependencies.
  */
 
+import compoundModelFactory from './compound-model-factory';
 import modelFactory from './model-factory';
 
 /**
@@ -10,8 +11,8 @@ import modelFactory from './model-factory';
  */
 
 export default async function() {
-  const TestModel = modelFactory();
-  const CompoundTestModel = modelFactory();
+  const TestModel = modelFactory({ fields: ['foo', 'bar'] });
+  const CompoundTestModel = compoundModelFactory({ fields: [['bar', 'foo']] });
 
   await TestModel.query().truncate();
   await CompoundTestModel.query().truncate();
