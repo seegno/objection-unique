@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.2.0](https://github.com/seegno/objection-unique/tree/v1.2.0) (2019-10-01)
+[Full Changelog](https://github.com/seegno/objection-unique/compare/v1.1.0...v1.2.0)
+
+**Merged pull requests:**
+
+- Move options validation up [\#14](https://github.com/seegno/objection-unique/pull/14) ([vonagam](https://github.com/vonagam))
+
 ## [v1.1.0](https://github.com/seegno/objection-unique/tree/v1.1.0) (2019-10-01)
 [Full Changelog](https://github.com/seegno/objection-unique/compare/v1.0.1...v1.1.0)
 
