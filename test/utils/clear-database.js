@@ -11,6 +11,8 @@ import modelFactory from './model-factory';
 
 export default async function() {
   const TestModel = modelFactory();
+  const CompoundTestModel = modelFactory();
 
-  await TestModel.query().del();
+  await TestModel.query().truncate();
+  await CompoundTestModel.query().truncate();
 };

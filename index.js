@@ -5,7 +5,8 @@
  */
 
 const isEmpty = require('lodash.isempty');
-const isNil = require('lodash.isnil');
+const castArray = require('lodash.castarray');
+const compact = require('lodash.compact');
 const util = require('util');
 
 /**
@@ -78,15 +79,20 @@ module.exports = options => {
 
       getQuery(update, queryOptions) {
         return options.fields.reduce((queries, field, index) => {
-          if (isNil(this[field])) {
+          const knex = Model.knex();
+          const collection = knex(this.constructor.tableName);
+          const fields = castArray(field);
+
+          if (isEmpty(compact(fields.map(fieldName => this[fieldName])))) {
             return queries;
           }
 
-          const knex = Model.knex();
-          const query = knex(this.constructor.tableName)
-            .select()
-            .where(field, this[field])
-            .limit(1);
+          const query = (
+            fields.reduce(
+              (subset, fieldName) => subset.where(fieldName, this[fieldName] || queryOptions.old[fieldName]),
+              collection.select(),
+            )
+          ).limit(1);
 
           if (update) {
             options.identifiers.forEach(identifier =>
@@ -107,10 +113,14 @@ module.exports = options => {
       parseErrors(rows) {
         return rows.reduce((errors, error, index) => {
           if (!isEmpty(error)) {
-            errors[[options.fields[index]]] = [{
-              keyword: 'unique',
-              message: util.format('%s already in use.', options.fields[index])
-            }];
+            const fields = castArray(options.fields[index]);
+
+            fields.forEach(field => {
+              errors[[field]] = [{
+                keyword: 'unique',
+                message: util.format('%s already in use.', options.fields[index])
+              }];
+            });
           }
 
           return errors;

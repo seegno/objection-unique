@@ -33,7 +33,7 @@ const Model = require('objection').Model;
 
 // Import the plugin.
 const unique = require('objection-unique')({
-  fields: ['email', 'username'],
+  fields: ['email', 'username', ['phone_prefix','phone_number']],
   identifiers: ['id']
 });
 
@@ -104,7 +104,7 @@ try {
 
 ## Options
 
-**fields:** The unique fields.
+**fields:** The unique fields. Compound fields can be specified as an array
 
 **identifiers:** The fields that identifies the model. (Default: ['id'])
 
@@ -112,7 +112,7 @@ These options can be provided when instantiating the plugin:
 
 ```js
 const unique = require('objection-unique')({
-  fields: ['email', 'username'],
+  fields: ['email', 'username', ['phone_prefix', 'phone_number']],
   identifiers: ['id']
 });
 ```
