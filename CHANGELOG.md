@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.1.0](https://github.com/seegno/objection-unique/tree/v1.1.0) (2019-10-01)
+[Full Changelog](https://github.com/seegno/objection-unique/compare/v1.0.1...v1.1.0)
+
+**Merged pull requests:**
+
+- Support for compound fields [\#15](https://github.com/seegno/objection-unique/pull/15) ([nicolaracco](https://github.com/nicolaracco))
+
 ## [v1.0.1](https://github.com/seegno/objection-unique/tree/v1.0.1) (2018-03-26)
 [Full Changelog](https://github.com/seegno/objection-unique/compare/v1.0.0...v1.0.1)
 
