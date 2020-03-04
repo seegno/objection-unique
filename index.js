@@ -83,12 +83,16 @@ module.exports = options => {
             return queries;
           }
 
-          const query = (
-            fields.reduce(
-              (subset, fieldName) => subset.where(fieldName, this[fieldName] || queryOptions.old[fieldName]),
-              collection.select(),
-            )
-          ).limit(1);
+          const query = fields
+            .reduce((subset, fieldName) => {
+              const oldFieldValue = queryOptions.old && queryOptions.old[fieldName];
+
+              return subset.where(
+                fieldName,
+                this[fieldName] || oldFieldValue || null
+              );
+            }, collection.select())
+            .limit(1);
 
           if (update) {
             options.identifiers.forEach(identifier =>

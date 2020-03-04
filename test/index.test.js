@@ -77,6 +77,17 @@ describe('FoobarController', () => {
 
       expect(result).toEqual({ bar: 'bar', biz: 'biz', foo: 'foo', id });
     });
+
+    it('should handle null values in compound keys', async () => {
+      const TestModel = modelFactory({
+        fields: [['bar', 'foo']]
+      });
+
+      const { id } = await TestModel.query().insert({ bar: 'bar' });
+      const result = await TestModel.query().findById(id);
+
+      expect(result).toEqual({ bar: 'bar', biz: null, foo: null, id: 1 });
+    });
   });
 
   describe('$beforeUpdate', () => {
