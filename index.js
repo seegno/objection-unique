@@ -32,7 +32,7 @@ module.exports = options => {
       $beforeInsert(context) {
         const parent = super.$beforeInsert(context);
 
-        return this.queryResolver(parent);
+        return this.queryResolver(parent, false, {}, context);
       }
 
       /**
@@ -46,16 +46,16 @@ module.exports = options => {
           throw new Error('Unique validation at update only works with queries started with $query.');
         }
 
-        return this.queryResolver(parent, true, queryOptions);
+        return this.queryResolver(parent, true, queryOptions, context);
       }
 
       /**
        * Query resolver.
        */
 
-      queryResolver(parent, update = false, queryOptions = {}) {
+      queryResolver(parent, update = false, queryOptions = {}, context) {
         return Promise.resolve(parent)
-          .then(() => Promise.all(this.getQuery(update, queryOptions)))
+          .then(() => Promise.all(this.getQuery(update, queryOptions, context)))
           .then(rows => {
             const errors = this.parseErrors(rows);
 
@@ -73,9 +73,9 @@ module.exports = options => {
        * Get select query.
        */
 
-      getQuery(update, queryOptions) {
+      getQuery(update, queryOptions, context) {
         return options.fields.reduce((queries, field, index) => {
-          const knex = Model.knex();
+          const knex = Model.knex() || context.transaction;
           const collection = knex(this.constructor.tableName);
           const fields = castArray(field);
 
