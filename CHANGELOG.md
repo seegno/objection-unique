@@ -1,5 +1,13 @@
 # Changelog
 
+## [v1.2.1](https://github.com/seegno/objection-unique/tree/v1.2.1) (2020-05-15)
+[Full Changelog](https://github.com/seegno/objection-unique/compare/v1.2.0...v1.2.1)
+
+**Merged pull requests:**
+
+- Fix knex getter when undefined on model class [\#27](https://github.com/seegno/objection-unique/pull/27) ([nunovieira220](https://github.com/nunovieira220))
+- Fix bug with null values in compound keys [\#22](https://github.com/seegno/objection-unique/pull/22) ([PatrickLef](https://github.com/PatrickLef))
+
 ## [v1.2.0](https://github.com/seegno/objection-unique/tree/v1.2.0) (2019-10-01)
 [Full Changelog](https://github.com/seegno/objection-unique/compare/v1.1.0...v1.2.0)
 
