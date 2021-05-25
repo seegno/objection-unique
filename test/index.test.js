@@ -88,6 +88,21 @@ describe('FoobarController', () => {
 
       expect(result).toEqual({ bar: 'bar', biz: null, foo: null, id: 1 });
     });
+
+    it('should favor transaction from context', async () => {
+      const TestModel = modelFactory({
+        fields: [['bar', 'foo']]
+      });
+
+      const result = await TestModel.knex().transaction(async trx => {
+        const { id } = await TestModel.query(trx).insert({ bar: 'bar', biz: 'biz', foo: 'foo' });
+        const result = await TestModel.query(trx).findById(id);
+
+        return result;
+      });
+
+      expect(result).toEqual({ bar: 'bar', biz: 'biz', foo: 'foo', id: 1 });
+    });
   });
 
   describe('$beforeUpdate', () => {

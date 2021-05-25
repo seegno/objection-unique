@@ -75,7 +75,7 @@ module.exports = options => {
 
       getQuery(update, queryOptions, context) {
         return options.fields.reduce((queries, field, index) => {
-          const knex = Model.knex() || context.transaction;
+          const knex = context.transaction || Model.knex();
           const collection = knex(this.constructor.tableName);
           const fields = castArray(field);
 
