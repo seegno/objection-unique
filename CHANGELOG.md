@@ -1,5 +1,12 @@
 # Changelog
 
+## [v1.2.2](https://github.com/seegno/objection-unique/tree/v1.2.2) (2021-05-26)
+[Full Changelog](https://github.com/seegno/objection-unique/compare/v1.2.1...v1.2.2)
+
+**Merged pull requests:**
+
+- Fix leaking transaction, favor transaction from context over creating new one [\#29](https://github.com/seegno/objection-unique/pull/29) ([dawaa](https://github.com/dawaa))
+
 ## [v1.2.1](https://github.com/seegno/objection-unique/tree/v1.2.1) (2020-05-15)
 [Full Changelog](https://github.com/seegno/objection-unique/compare/v1.2.0...v1.2.1)
 
