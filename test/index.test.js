@@ -17,7 +17,7 @@ describe('FoobarController', () => {
 
   it('should throw an error if there is no fields or identifiers options.', () => {
     try {
-      const TestModel = modelFactory();
+      modelFactory();
 
       fail();
     } catch (e) {
