@@ -69,7 +69,7 @@ try {
     //   username: [{
     //     keyword: 'unique',
     //     message: 'username already in use.'
-    //   }
+    //   }]
     // }
 }
 ```
