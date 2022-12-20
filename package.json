@@ -53,9 +53,9 @@
     "eslint-config-seegno": "^9.0.0",
     "eslint-plugin-jest": "^19.0.1",
     "jest": "^20.0.3",
-    "knex": "^0.13.0",
+    "knex": "^2.3.0",
     "lint-staged": "^3.4.1",
-    "objection": "^1.0.0",
+    "objection": "^3.0.1",
     "pre-commit": "^1.2.2",
     "sqlite3": "^4.0.6"
   },
